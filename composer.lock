@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c0b30c7c52b1e12c83bf38e7c5beee7a",
+    "content-hash": "78ac14f316485c9bddb89bc5d7a5e15c",
     "packages": [
         {
             "name": "brick/math",
@@ -2509,6 +2509,507 @@
             "time": "2024-11-21T10:39:51+00:00"
         },
         {
+            "name": "php-flasher/flasher",
+            "version": "v2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-flasher/flasher.git",
+                "reference": "edf57294f0511a4f2e185a70b369b7d3bdb0f806"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-flasher/flasher/zipball/edf57294f0511a4f2e185a70b369b7d3bdb0f806",
+                "reference": "edf57294f0511a4f2e185a70b369b7d3bdb0f806",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2"
+            },
+            "type": "library",
+            "extra": {
+                "phpstan": {
+                    "includes": [
+                        "extension.neon"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "functions.php",
+                    "helpers.php"
+                ],
+                "psr-4": {
+                    "Flasher\\Prime\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Younes ENNAJI",
+                    "email": "younes.ennaji.pro@gmail.com",
+                    "homepage": "https://www.linkedin.com/in/younes--ennaji/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "The foundational PHP library for PHPFlasher, enabling the creation of framework-agnostic flash notifications. Ideal for building custom integrations or for use in PHP projects.",
+            "homepage": "https://php-flasher.io",
+            "keywords": [
+                "custom-integrations",
+                "flash-notifications",
+                "flasher-core",
+                "framework-agnostic",
+                "open-source",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/php-flasher/php-flasher/issues",
+                "source": "https://github.com/php-flasher/php-flasher"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.com/paypalme/yoeunes",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/yoeunes",
+                    "type": "github"
+                },
+                {
+                    "url": "https://ko-fi.com/yoeunes",
+                    "type": "ko_fi"
+                },
+                {
+                    "url": "https://opencollective.com/php-flasher",
+                    "type": "open_collective"
+                },
+                {
+                    "url": "https://www.patreon.com/yoeunes",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2024-10-20T14:11:19+00:00"
+        },
+        {
+            "name": "php-flasher/flasher-laravel",
+            "version": "v2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-flasher/flasher-laravel.git",
+                "reference": "8cfe006ded9064bb4457126451ad2bfe57f8f8cd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-flasher/flasher-laravel/zipball/8cfe006ded9064bb4457126451ad2bfe57f8f8cd",
+                "reference": "8cfe006ded9064bb4457126451ad2bfe57f8f8cd",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^11.0",
+                "php": ">=8.2",
+                "php-flasher/flasher": "^2.1.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "Flasher": "Flasher\\Laravel\\Facade\\Flasher"
+                    },
+                    "providers": [
+                        "Flasher\\Laravel\\FlasherServiceProvider"
+                    ]
+                },
+                "phpstan": {
+                    "includes": [
+                        "extension.neon"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Flasher\\Laravel\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Younes ENNAJI",
+                    "email": "younes.ennaji.pro@gmail.com",
+                    "homepage": "https://www.linkedin.com/in/younes--ennaji/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Seamlessly integrate flash notifications into your Laravel applications with PHPFlasher. Enhance user feedback and engagement with minimal setup.",
+            "homepage": "https://php-flasher.io",
+            "keywords": [
+                "flash-notifications",
+                "laravel",
+                "open-source",
+                "php",
+                "phpflasher",
+                "user-feedback"
+            ],
+            "support": {
+                "issues": "https://github.com/php-flasher/php-flasher/issues",
+                "source": "https://github.com/php-flasher/php-flasher"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.com/paypalme/yoeunes",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/yoeunes",
+                    "type": "github"
+                },
+                {
+                    "url": "https://ko-fi.com/yoeunes",
+                    "type": "ko_fi"
+                },
+                {
+                    "url": "https://opencollective.com/php-flasher",
+                    "type": "open_collective"
+                },
+                {
+                    "url": "https://www.patreon.com/yoeunes",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2024-10-20T14:11:19+00:00"
+        },
+        {
+            "name": "php-flasher/flasher-symfony",
+            "version": "v2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-flasher/flasher-symfony.git",
+                "reference": "01905e67aa37310736a6d3db102e8e6fefa1f106"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-flasher/flasher-symfony/zipball/01905e67aa37310736a6d3db102e8e6fefa1f106",
+                "reference": "01905e67aa37310736a6d3db102e8e6fefa1f106",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2",
+                "php-flasher/flasher": "^2.1.1",
+                "symfony/config": "^7.0",
+                "symfony/console": "^7.0",
+                "symfony/dependency-injection": "^7.0",
+                "symfony/http-kernel": "^7.0"
+            },
+            "suggest": {
+                "symfony/translation": "To translate flash messages, title and presets",
+                "symfony/ux-twig-component": "To utilize and interact with flash messages components in Twig templates"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Flasher\\Symfony\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Younes ENNAJI",
+                    "email": "younes.ennaji.pro@gmail.com",
+                    "homepage": "https://www.linkedin.com/in/younes--ennaji/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Integrate flash notifications into Symfony projects effortlessly with PHPFlasher. Improve user experience and application feedback loops easily.",
+            "homepage": "https://php-flasher.io",
+            "keywords": [
+                "flash-notifications",
+                "open-source",
+                "php",
+                "phpflasher",
+                "symfony",
+                "user-feedback"
+            ],
+            "support": {
+                "issues": "https://github.com/php-flasher/php-flasher/issues",
+                "source": "https://github.com/php-flasher/php-flasher"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.com/paypalme/yoeunes",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/yoeunes",
+                    "type": "github"
+                },
+                {
+                    "url": "https://ko-fi.com/yoeunes",
+                    "type": "ko_fi"
+                },
+                {
+                    "url": "https://opencollective.com/php-flasher",
+                    "type": "open_collective"
+                },
+                {
+                    "url": "https://www.patreon.com/yoeunes",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2024-10-20T14:11:19+00:00"
+        },
+        {
+            "name": "php-flasher/flasher-toastr",
+            "version": "v2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-flasher/flasher-toastr.git",
+                "reference": "b63db9611f2ea183c88f4586b31c1bf4e8f38f10"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-flasher/flasher-toastr/zipball/b63db9611f2ea183c88f4586b31c1bf4e8f38f10",
+                "reference": "b63db9611f2ea183c88f4586b31c1bf4e8f38f10",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2",
+                "php-flasher/flasher": "^2.1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "functions.php",
+                    "helpers.php"
+                ],
+                "psr-4": {
+                    "Flasher\\Toastr\\Prime\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Younes ENNAJI",
+                    "email": "younes.ennaji.pro@gmail.com",
+                    "homepage": "https://www.linkedin.com/in/younes--ennaji/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHPFlasher Toastr - An extension for PHPFlasher to integrate Toastr notifications seamlessly in Laravel or Symfony. Enhances UX with elegant, responsive toast messages.",
+            "homepage": "https://php-flasher.io",
+            "keywords": [
+                "customizable-alerts-php",
+                "flash-messages",
+                "interactive-web-notifications",
+                "laravel-notification",
+                "php-messaging-library",
+                "php-notification-system",
+                "php-user-interface",
+                "symfony-notification",
+                "user-engagement-php",
+                "user-feedback-tools",
+                "web-application-notifications"
+            ],
+            "support": {
+                "issues": "https://github.com/php-flasher/php-flasher/issues",
+                "source": "https://github.com/php-flasher/php-flasher"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.com/paypalme/yoeunes",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/yoeunes",
+                    "type": "github"
+                },
+                {
+                    "url": "https://ko-fi.com/yoeunes",
+                    "type": "ko_fi"
+                },
+                {
+                    "url": "https://opencollective.com/php-flasher",
+                    "type": "open_collective"
+                },
+                {
+                    "url": "https://www.patreon.com/yoeunes",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2024-10-20T14:11:19+00:00"
+        },
+        {
+            "name": "php-flasher/flasher-toastr-laravel",
+            "version": "v2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-flasher/flasher-toastr-laravel.git",
+                "reference": "f6a495211b4c3ff505ddfa691dacc27af436aef0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-flasher/flasher-toastr-laravel/zipball/f6a495211b4c3ff505ddfa691dacc27af436aef0",
+                "reference": "f6a495211b4c3ff505ddfa691dacc27af436aef0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2",
+                "php-flasher/flasher-laravel": "^2.1.1",
+                "php-flasher/flasher-toastr": "^2.1.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "Toastr": "Flasher\\Toastr\\Laravel\\Facade\\Toastr"
+                    },
+                    "providers": [
+                        "Flasher\\Toastr\\Laravel\\FlasherToastrServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Flasher\\Toastr\\Laravel\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Younes ENNAJI",
+                    "email": "younes.ennaji.pro@gmail.com",
+                    "homepage": "https://www.linkedin.com/in/younes--ennaji/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Leverage Toastr for stylish toast notifications in Laravel with PHPFlasher. Add Toastr's sleek notifications to your Laravel projects effortlessly.",
+            "homepage": "https://php-flasher.io",
+            "keywords": [
+                "dynamic-notifications",
+                "flash-notifications",
+                "laravel",
+                "open-source",
+                "phpflasher",
+                "toastr",
+                "user-feedback"
+            ],
+            "support": {
+                "issues": "https://github.com/php-flasher/php-flasher/issues",
+                "source": "https://github.com/php-flasher/php-flasher"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.com/paypalme/yoeunes",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/yoeunes",
+                    "type": "github"
+                },
+                {
+                    "url": "https://ko-fi.com/yoeunes",
+                    "type": "ko_fi"
+                },
+                {
+                    "url": "https://opencollective.com/php-flasher",
+                    "type": "open_collective"
+                },
+                {
+                    "url": "https://www.patreon.com/yoeunes",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2024-10-20T14:11:19+00:00"
+        },
+        {
+            "name": "php-flasher/flasher-toastr-symfony",
+            "version": "v2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-flasher/flasher-toastr-symfony.git",
+                "reference": "a16baeab0b18fdc104a36c3d5612f5e692b38978"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-flasher/flasher-toastr-symfony/zipball/a16baeab0b18fdc104a36c3d5612f5e692b38978",
+                "reference": "a16baeab0b18fdc104a36c3d5612f5e692b38978",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2",
+                "php-flasher/flasher-symfony": "^2.1.1",
+                "php-flasher/flasher-toastr": "^2.1.1"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Flasher\\Toastr\\Symfony\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Younes ENNAJI",
+                    "email": "younes.ennaji.pro@gmail.com",
+                    "homepage": "https://www.linkedin.com/in/younes--ennaji/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Integrate Toastr's smooth toast notifications into Symfony projects using PHPFlasher. Enhance Symfony applications with Toastr's refined visuals.",
+            "homepage": "https://php-flasher.io",
+            "keywords": [
+                "dynamic-notifications",
+                "flash-notifications",
+                "laravel",
+                "open-source",
+                "phpflasher",
+                "toastr",
+                "user-feedback"
+            ],
+            "support": {
+                "issues": "https://github.com/php-flasher/php-flasher/issues",
+                "source": "https://github.com/php-flasher/php-flasher"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.com/paypalme/yoeunes",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/yoeunes",
+                    "type": "github"
+                },
+                {
+                    "url": "https://ko-fi.com/yoeunes",
+                    "type": "ko_fi"
+                },
+                {
+                    "url": "https://opencollective.com/php-flasher",
+                    "type": "open_collective"
+                },
+                {
+                    "url": "https://www.patreon.com/yoeunes",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2024-10-20T14:11:19+00:00"
+        },
+        {
             "name": "phpoption/phpoption",
             "version": "1.9.3",
             "source": {
@@ -3374,6 +3875,81 @@
             "time": "2024-09-25T14:21:43+00:00"
         },
         {
+            "name": "symfony/config",
+            "version": "v7.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/config.git",
+                "reference": "bcd3c4adf0144dee5011bb35454728c38adec055"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/config/zipball/bcd3c4adf0144dee5011bb35454728c38adec055",
+                "reference": "bcd3c4adf0144dee5011bb35454728c38adec055",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2",
+                "symfony/deprecation-contracts": "^2.5|^3",
+                "symfony/filesystem": "^7.1",
+                "symfony/polyfill-ctype": "~1.8"
+            },
+            "conflict": {
+                "symfony/finder": "<6.4",
+                "symfony/service-contracts": "<2.5"
+            },
+            "require-dev": {
+                "symfony/event-dispatcher": "^6.4|^7.0",
+                "symfony/finder": "^6.4|^7.0",
+                "symfony/messenger": "^6.4|^7.0",
+                "symfony/service-contracts": "^2.5|^3",
+                "symfony/yaml": "^6.4|^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Config\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Helps you find, load, combine, autofill and validate configuration values of any kind",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/config/tree/v7.2.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2024-11-04T11:36:24+00:00"
+        },
+        {
             "name": "symfony/console",
             "version": "v7.2.1",
             "source": {
@@ -3530,6 +4106,86 @@
                 }
             ],
             "time": "2024-09-25T14:21:43+00:00"
+        },
+        {
+            "name": "symfony/dependency-injection",
+            "version": "v7.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/dependency-injection.git",
+                "reference": "a475747af1a1c98272a5471abc35f3da81197c5d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/a475747af1a1c98272a5471abc35f3da81197c5d",
+                "reference": "a475747af1a1c98272a5471abc35f3da81197c5d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2",
+                "psr/container": "^1.1|^2.0",
+                "symfony/deprecation-contracts": "^2.5|^3",
+                "symfony/service-contracts": "^3.5",
+                "symfony/var-exporter": "^6.4|^7.0"
+            },
+            "conflict": {
+                "ext-psr": "<1.1|>=2",
+                "symfony/config": "<6.4",
+                "symfony/finder": "<6.4",
+                "symfony/yaml": "<6.4"
+            },
+            "provide": {
+                "psr/container-implementation": "1.1|2.0",
+                "symfony/service-implementation": "1.1|2.0|3.0"
+            },
+            "require-dev": {
+                "symfony/config": "^6.4|^7.0",
+                "symfony/expression-language": "^6.4|^7.0",
+                "symfony/yaml": "^6.4|^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\DependencyInjection\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Allows you to standardize and centralize the way objects are constructed in your application",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/dependency-injection/tree/v7.2.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2024-11-25T15:45:00+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -3828,6 +4484,72 @@
                 }
             ],
             "time": "2024-09-25T14:20:29+00:00"
+        },
+        {
+            "name": "symfony/filesystem",
+            "version": "v7.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/filesystem.git",
+                "reference": "b8dce482de9d7c9fe2891155035a7248ab5c7fdb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/b8dce482de9d7c9fe2891155035a7248ab5c7fdb",
+                "reference": "b8dce482de9d7c9fe2891155035a7248ab5c7fdb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2",
+                "symfony/polyfill-ctype": "~1.8",
+                "symfony/polyfill-mbstring": "~1.8"
+            },
+            "require-dev": {
+                "symfony/process": "^6.4|^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Filesystem\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Provides basic utilities for the filesystem",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/filesystem/tree/v7.2.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2024-10-25T15:15:23+00:00"
         },
         {
             "name": "symfony/finder",
@@ -5526,6 +6248,82 @@
                 }
             ],
             "time": "2024-11-08T15:48:14+00:00"
+        },
+        {
+            "name": "symfony/var-exporter",
+            "version": "v7.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/var-exporter.git",
+                "reference": "1a6a89f95a46af0f142874c9d650a6358d13070d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/var-exporter/zipball/1a6a89f95a46af0f142874c9d650a6358d13070d",
+                "reference": "1a6a89f95a46af0f142874c9d650a6358d13070d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2"
+            },
+            "require-dev": {
+                "symfony/property-access": "^6.4|^7.0",
+                "symfony/serializer": "^6.4|^7.0",
+                "symfony/var-dumper": "^6.4|^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\VarExporter\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Allows exporting any serializable PHP data structure to plain PHP code",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "clone",
+                "construct",
+                "export",
+                "hydrate",
+                "instantiate",
+                "lazy-loading",
+                "proxy",
+                "serialize"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/var-exporter/tree/v7.2.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2024-10-18T07:58:17+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
