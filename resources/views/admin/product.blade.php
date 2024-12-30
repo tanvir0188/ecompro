@@ -18,6 +18,9 @@
         <!-- Sidebar Navigation-->
         @include('admin.sidebar')
         <!-- Sidebar Navigation end-->
+
+        
+
         <div class="page-content">
             <div class="page-header">
                 <div class="container-fluid">
@@ -121,6 +124,11 @@
                 
             
             <div class="container">
+                <form action="{{url('product_search')}}" method="get">
+                    @csrf
+                    <input type="search" name="search">
+                    <input type="submit" class="btn btn-success">
+                </form>
                 
                 <table class="table table-dark table-striped">
                     <tr>

@@ -8,9 +8,7 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'home']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [HomeController::class, 'login_home'])->middleware(['auth', 'verified'])->name('dashboard');;
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -31,3 +29,4 @@ Route::post('upload_product', [AdminController::class, 'upload_product'])->middl
 Route::get('delete_product/{id}', [AdminController::class, 'delete_product'])->middleware(['auth', 'admin']);
 Route::get('edit_product/{id}', [AdminController::class, 'edit_product'])->middleware(['auth', 'admin']);
 Route::put('update_product/{id}', [AdminController::class, 'update_product'])->middleware(['auth', 'admin']);
+Route::get('product_search', [AdminController::class, 'product_search'])->middleware(['auth', 'admin']);

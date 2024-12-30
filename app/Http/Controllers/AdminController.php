@@ -51,6 +51,13 @@ class AdminController extends Controller
         return view('admin.product', $context);
     }
 
+    public function product_search(Request $request)
+    {
+        $search = $request->search;
+        $products = Product::where('title', 'LIKE', '%' . $search . '%')->orWhere('description', 'LIKE', '%' . $search . '%')->orWhere('category', 'LIKE', '%' . $search . '%')->paginate(3);
+        return view('admin.productView', compact('products'));
+    }
+
     public function upload_product(Request $request)
     {
 
