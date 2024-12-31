@@ -78,10 +78,20 @@ class HomeController extends Controller
     }
     public function confirm_order(Request $request)
     {
+        // Check if the cart is empty
+        $cart = cart::where('user_id', Auth::id())->get();
+
+        // If the cart is empty, return with a message
+        if ($cart->isEmpty()) {
+            return redirect()->back()->with('error', 'You have no items in your cart.');
+        }
+
+        // Retrieve user input from the request
         $name = $request->name;
         $phone = $request->phone;
         $address = $request->rec_address;
-        $cart = cart::where('user_id', Auth::id())->get();
+
+        // Iterate through the cart items and create orders
         foreach ($cart as $cartItem) {
             $order = new Order;
             $order->name = $name;
@@ -91,7 +101,11 @@ class HomeController extends Controller
             $order->product_id = $cartItem->product_id;
             $order->save();
         }
+
+        // Delete all cart items for the user
         cart::where('user_id', Auth::id())->delete();
+
+        // Redirect back with a success message
         return redirect()->back()->with('success', 'Order confirmed successfully');
     }
 }
