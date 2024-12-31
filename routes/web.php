@@ -36,3 +36,4 @@ Route::get('product_search', [AdminController::class, 'product_search'])->middle
 Route::get('add_cart/{id}', [HomeController::class, 'add_cart'])->middleware(['auth', 'verified']);
 Route::get('view_cart', [HomeController::class, 'view_cart'])->middleware(['auth', 'verified']); //here we don't need to pass user id because, it's the user id that needed to be passed
 Route::get('delete_cart/{id}', [HomeController::class, 'delete_cart'])->middleware(['auth', 'verified']);
+Route::post('confirm_order', [HomeController::class, 'confirm_order'])->middleware(['auth', 'verified']);

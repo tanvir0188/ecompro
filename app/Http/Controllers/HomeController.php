@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\cart;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -74,5 +75,23 @@ class HomeController extends Controller
         $cart = cart::findOrFail($id);
         $cart->delete();
         return redirect()->back()->with('success', 'Product deleted from cart successfully');
+    }
+    public function confirm_order(Request $request)
+    {
+        $name = $request->name;
+        $phone = $request->phone;
+        $address = $request->rec_address;
+        $cart = cart::where('user_id', Auth::id())->get();
+        foreach ($cart as $cartItem) {
+            $order = new Order;
+            $order->name = $name;
+            $order->phone = $phone;
+            $order->rec_address = $address;
+            $order->user_id = Auth::id();
+            $order->product_id = $cartItem->product_id;
+            $order->save();
+        }
+        cart::where('user_id', Auth::id())->delete();
+        return redirect()->back()->with('success', 'Order confirmed successfully');
     }
 }
