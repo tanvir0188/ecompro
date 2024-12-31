@@ -8,7 +8,8 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'home']);
 
-Route::get('/dashboard', [HomeController::class, 'login_home'])->middleware(['auth', 'verified'])->name('dashboard');;
+Route::get('/dashboard', [HomeController::class, 'login_home'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('product_details/{id}', [HomeController::class, 'product_details'])->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -30,3 +31,8 @@ Route::get('delete_product/{id}', [AdminController::class, 'delete_product'])->m
 Route::get('edit_product/{id}', [AdminController::class, 'edit_product'])->middleware(['auth', 'admin']);
 Route::put('update_product/{id}', [AdminController::class, 'update_product'])->middleware(['auth', 'admin']);
 Route::get('product_search', [AdminController::class, 'product_search'])->middleware(['auth', 'admin']);
+
+
+Route::get('add_cart/{id}', [HomeController::class, 'add_cart'])->middleware(['auth', 'verified']);
+Route::get('view_cart', [HomeController::class, 'view_cart'])->middleware(['auth', 'verified']); //here we don't need to pass user id because, it's the user id that needed to be passed
+Route::get('delete_cart/{id}', [HomeController::class, 'delete_cart'])->middleware(['auth', 'verified']);

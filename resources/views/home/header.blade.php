@@ -13,7 +13,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav  ">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{ url('/dashboard') }}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="shop.html">
@@ -54,7 +54,7 @@
                     </span>
                 </a>
                 <a href="{{ url('/register') }}">
-                    <i class="fa fa-vcard" aria-hidden="true"></i>
+                    <i class="fas fa-vcard" aria-hidden="true"></i>
                     <span>
                         Register
                     </span>
@@ -64,8 +64,12 @@
                 
                 
                 </a>
-                <a href="">
+                <a href="{{url('view_cart')}}">
                     <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                    @if ($cart_count)
+                    <sup>{{$cart_count}}</sup>
+                    @endif
+                    
                 </a>
                 <form class="form-inline ">
                     <button class="btn nav_search-btn" type="submit">

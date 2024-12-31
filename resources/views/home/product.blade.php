@@ -9,7 +9,7 @@
         @foreach ($products as $product)
         <div class="col-sm-6 col-md-4 col-lg-3">
           <div class="box">
-            <a href="">
+            <a href="{{url('product_details',$product->id)}}">
               <div class="img-box">
                 <img src="{{asset('admintemplate/img/products/' . $product->image)}}" alt="">
               </div>
@@ -23,6 +23,9 @@
                     {{$product->price}}৳
                   </span>
                 </h6>
+              </div>
+              <div class="d-flex justify-content-center">
+                <a class="btn btn-primary" href="{{url('add_cart/'.$product->id)}}">add to cart</a>
               </div>
               <div class="new">
                 <span>
