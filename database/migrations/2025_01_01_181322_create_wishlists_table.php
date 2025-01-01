@@ -11,31 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('wishlists', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->string('rec_address')->nullable();
-            $table->string('phone')->nullable();
-            $table->string('status')->default('in progress');
-            $table->string('payment_status')->default('cash on delivery');
-
-
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('product_id')->constrained()->onDelete('cascade');
-
-
-
-
+            $table->unique(['user_id', 'product_id']);
             $table->timestamps();
         });
     }
 
     /**
-     * 
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('wishlists');
     }
 };

@@ -83,34 +83,69 @@
             <div class="col-md-4">
                 <div class="order-form">
                     <h6 class="mb-4">Place Your Order</h6>
-                    <form action="{{url('confirm_order')}}" method="POST">
+                    <form id="orderForm" action="{{url('confirm_order')}}" method="POST">
                         @csrf
                         <!-- Name Input -->
                         <div class="mb-3">
                             <label for="name" class="form-label">Full Name</label>
                             <input type="text" class="form-control" id="name" name="name" value="{{Auth::user()->name}}" required>
                         </div>
-    
+            
                         <!-- Address Input -->
                         <div class="mb-3">
                             <label for="address" class="form-label">Shipping Address</label>
                             <input type="text" class="form-control" id="address" name="rec_address" value="{{Auth::user()->address}}" required>
                         </div>
-    
+            
                         <!-- Phone Number Input -->
                         <div class="mb-3">
                             <label for="phone" class="form-label">Phone Number</label>
                             <input type="text" class="form-control" id="phone" name="phone" value="{{Auth::user()->phone}}" required>
                         </div>
-    
+            
+                        <!-- Payment Method Options -->
+                        <div class="mb-3">
+                            <label class="form-label">Payment Method</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="payment_method" id="cash_on_delivery" value="cash_on_delivery" required>
+                                <label class="form-check-label" for="cash_on_delivery">
+                                    Cash on Delivery
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="payment_method" id="pay_using_card" value="pay_using_card">
+                                <label class="form-check-label" for="pay_using_card">
+                                    Pay Using Card
+                                </label>
+                            </div>
+                        </div>
+            
                         <!-- Submit Button -->
                         <div class="d-flex justify-content-between">
-                            <button type="submit" class="btn btn-primary">Place Order</button>
+                            <button type="button" class="btn btn-primary" id="placeOrderBtn">Place Order</button>
                             <span class="font-weight-bold">Total: {{ $totalValue }} Tk</span>
                         </div>
                     </form>
                 </div>
             </div>
+            
+            <script>
+                document.getElementById('placeOrderBtn').addEventListener('click', function () {
+                    const selectedPaymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
+            
+                    if (selectedPaymentMethod === 'cash_on_delivery') {
+                        // Submit the form to the 'confirm_order' URL
+                        document.getElementById('orderForm').submit();
+                    } else if (selectedPaymentMethod === 'pay_using_card') {
+                        // Redirect to the Stripe payment page
+                        window.location.href = "{{ url('stripe', $totalValue) }}";
+                    } else {
+                        alert('Please select a payment method.');
+                    }
+                });
+            </script>
+            
+            
         </div>
     </div>
     

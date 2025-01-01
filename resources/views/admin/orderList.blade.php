@@ -46,6 +46,7 @@
                                 <th>Product</th>
                                 <th>Image</th>
                                 <th>Price</th>
+                                <th>Payment status</th>
                                 <th>Change status</th>
                             </tr>
                         </thead>
@@ -71,6 +72,13 @@
                                             class="img-fluid" alt="Product Image"
                                             style="max-width: 100px; height: auto;"></td>
                                     <td>{{ $order->product->price }} Tk</td>
+                                    <td>
+                                        @if ($order->payment_status == 'paid')
+                                        <span class="badge badge-success">Paid</span>
+                                        @else
+                                        <span class="badge badge-secondary">Cash on delivery</span>
+                                        @endif
+                                    </td>
                                     <td>
                                         <a class="btn btn-primary" href="{{ url('on_the_way', $order->id) }}">On the
                                             way</a>

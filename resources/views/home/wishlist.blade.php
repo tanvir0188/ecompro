@@ -4,37 +4,16 @@
 <head>
     @include('home.css')
     <style>
-        .product-img {
-            width: 40px;
-            height: 40px;
-            object-fit: cover;
-            border-radius: 4px;
+        .product-title-link {
+            text-decoration: none;
+            color: #000; /* Default color for the title */
         }
-
-        .table td {
-            vertical-align: middle;
-        }
-
-        .badge {
-            font-size: 0.9em;
-            padding: 0.5em 0.75em;
-        }
-
-        .navbar-brand img {
-            margin-right: 8px;
-        }
-
-        .table-responsive {
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .btn-outline-primary:hover {
-            transform: translateY(-1px);
-            transition: transform 0.2s;
+        .product-title-link:hover {
+            color: #87ceeb; /* Hover color */
         }
     </style>
+    
+    
 </head>
 
 <body>
@@ -49,115 +28,56 @@
         <!-- end slider section -->
     </div>
     <div class="container my-5">
-        <h1 class="text-center mb-4">Orders</h1>
+        <h1 class="text-center mb-4">My wishlist</h1>
 
-        <h2 class="text-start mb-4">Pending Orders</h2>
         <div class="table-responsive">
-            @if ($pendingOrders->count() > 0)
-                <table class="table table-hover table-striped">
+            @if ($wishlist->count() > 0)
+                <table class="table table-hover align-middle">
                     <thead class="table-dark">
                         <tr>
-
                             <th>Product</th>
-                            <th>Order Date</th>
-                            <th>Status</th>
                             <th>Price</th>
-                            <th>Payment status</th>
-                            
-
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-
-                        @foreach ($pendingOrders as $order)
+                        @foreach ($wishlist as $item)
                             <tr>
-
-                                <td>
-                                    <img src="{{ asset('admintemplate/img/products/' . $order->product->image) }}"
-                                        class="product-img me-2" alt="TV">
-                                    {{ $order->product->title }}
+                                <!-- Product Details -->
+                                <td class="d-flex align-items-center">
+                                    <img width="60" height="60" src="{{ asset('admintemplate/img/products/' . $item->product->image) }}"
+                                        class="rounded me-3 border" alt="{{ $item->product->title }}">
+                                    <a href="{{ url('product_details/' . $item->product->id) }}" 
+                                        class="fw-bold product-title-link">
+                                        {{ $item->product->title }}
+                                    </a>
                                 </td>
-                                <td>{{ $order->created_at }}</td>
-                                <td>
-                                    @if (strcasecmp($order->status, 'in progress') === 0)
-                                        <span class="badge badge-pill badge-warning">{{ $order->status }}</span>
-                                    @elseif (strcasecmp($order->status, 'on the way') === 0)
-                                        <span class="badge badge-pill badge-secondary">{{ $order->status }}</span>
-                                    @elseif (strcasecmp($order->status, 'delivered') === 0)
-                                        <span class="badge badge-pill badge-success">{{ $order->status }}</span>
-                                    @endif
+                                <!-- Product Price -->
+                                <td class="fw-semibold text-success">
+                                    {{ number_format($item->product->price, 2) }} Tk
                                 </td>
-                                <td>{{ $order->product->price }} Tk</td>
-                                <td>{{ $order->payment_status }}</td>
-                                
+                                <!-- Actions -->
+                                <td>
+                                    <a href="{{ url('add_cart/' . $item->product->id) }}" class="btn btn-sm btn-primary me-2">
+                                        <i class="fa fa-shopping-cart me-1"></i> Add to Cart
+                                    </a>
+                                    <a href="{{ url('delete_wishlist/' . $item->product->id) }}" 
+                                        class="btn btn-sm btn-danger">
+                                        <i class="fa fa-trash me-1"></i> Remove
+                                    </a>
+                                </td>
                             </tr>
                         @endforeach
-
-
-
-
-
                     </tbody>
                 </table>
             @else
-                <h3 class="text-center mb-4">No pending orders</h3>
+                <h3 class="text-center my-4 text-muted">You have no items in your wishlist</h3>
             @endif
         </div>
+        
+        
 
-        <br>
-        <h2 class="text-start mb-4">Previous Orders</h2>
-        <div class="table-responsive">
-            @if ($previousOrders->count() > 0)
-
-                <table class="table table-hover table-striped">
-                    <thead class="table-dark">
-                        <tr>
-
-                            <th>Product</th>
-                            <th>Order Date</th>
-                            <th>Status</th>
-                            <th>Price</th>
-                            
-                            
-
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        @foreach ($previousOrders as $order)
-                            <tr>
-
-                                <td>
-                                    <img src="{{ asset('admintemplate/img/products/' . $order->product->image) }}"
-                                        class="product-img me-2" alt="TV">
-                                    {{ $order->product->title }}
-                                </td>
-                                <td>{{ $order->created_at }}</td>
-                                <td>
-                                    @if (strcasecmp($order->status, 'in progress') === 0)
-                                        <span class="badge badge-pill badge-warning">{{ $order->status }}</span>
-                                    @elseif (strcasecmp($order->status, 'on the way') === 0)
-                                        <span class="badge badge-pill badge-secondary">{{ $order->status }}</span>
-                                    @elseif (strcasecmp($order->status, 'delivered') === 0)
-                                        <span class="badge badge-pill badge-success">{{ $order->status }}</span>
-                                    @endif
-                                </td>
-                                <td>{{ $order->product->price }} Tk</td>
-                                
-                            </tr>
-                        @endforeach
-
-
-
-
-
-                    </tbody>
-                </table>
-            @else
-                <h3 class="text-center mb-4">No previous orders</h3>
-            @endif
-        </div>
-    </div>
+        
 
     <section class="info_section  layout_padding2-top mt-5">
         <div class="social_container">

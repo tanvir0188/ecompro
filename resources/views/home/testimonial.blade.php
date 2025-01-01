@@ -48,116 +48,86 @@
 
         <!-- end slider section -->
     </div>
-    <div class="container my-5">
-        <h1 class="text-center mb-4">Orders</h1>
-
-        <h2 class="text-start mb-4">Pending Orders</h2>
-        <div class="table-responsive">
-            @if ($pendingOrders->count() > 0)
-                <table class="table table-hover table-striped">
-                    <thead class="table-dark">
-                        <tr>
-
-                            <th>Product</th>
-                            <th>Order Date</th>
-                            <th>Status</th>
-                            <th>Price</th>
-                            <th>Payment status</th>
-                            
-
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        @foreach ($pendingOrders as $order)
-                            <tr>
-
-                                <td>
-                                    <img src="{{ asset('admintemplate/img/products/' . $order->product->image) }}"
-                                        class="product-img me-2" alt="TV">
-                                    {{ $order->product->title }}
-                                </td>
-                                <td>{{ $order->created_at }}</td>
-                                <td>
-                                    @if (strcasecmp($order->status, 'in progress') === 0)
-                                        <span class="badge badge-pill badge-warning">{{ $order->status }}</span>
-                                    @elseif (strcasecmp($order->status, 'on the way') === 0)
-                                        <span class="badge badge-pill badge-secondary">{{ $order->status }}</span>
-                                    @elseif (strcasecmp($order->status, 'delivered') === 0)
-                                        <span class="badge badge-pill badge-success">{{ $order->status }}</span>
-                                    @endif
-                                </td>
-                                <td>{{ $order->product->price }} Tk</td>
-                                <td>{{ $order->payment_status }}</td>
-                                
-                            </tr>
-                        @endforeach
-
-
-
-
-
-                    </tbody>
-                </table>
-            @else
-                <h3 class="text-center mb-4">No pending orders</h3>
-            @endif
+    <section class="client_section layout_padding">
+        <div class="container">
+          <div class="heading_container heading_center">
+            <h2>
+              Testimonial
+            </h2>
+          </div>
         </div>
-
-        <br>
-        <h2 class="text-start mb-4">Previous Orders</h2>
-        <div class="table-responsive">
-            @if ($previousOrders->count() > 0)
-
-                <table class="table table-hover table-striped">
-                    <thead class="table-dark">
-                        <tr>
-
-                            <th>Product</th>
-                            <th>Order Date</th>
-                            <th>Status</th>
-                            <th>Price</th>
-                            
-                            
-
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        @foreach ($previousOrders as $order)
-                            <tr>
-
-                                <td>
-                                    <img src="{{ asset('admintemplate/img/products/' . $order->product->image) }}"
-                                        class="product-img me-2" alt="TV">
-                                    {{ $order->product->title }}
-                                </td>
-                                <td>{{ $order->created_at }}</td>
-                                <td>
-                                    @if (strcasecmp($order->status, 'in progress') === 0)
-                                        <span class="badge badge-pill badge-warning">{{ $order->status }}</span>
-                                    @elseif (strcasecmp($order->status, 'on the way') === 0)
-                                        <span class="badge badge-pill badge-secondary">{{ $order->status }}</span>
-                                    @elseif (strcasecmp($order->status, 'delivered') === 0)
-                                        <span class="badge badge-pill badge-success">{{ $order->status }}</span>
-                                    @endif
-                                </td>
-                                <td>{{ $order->product->price }} Tk</td>
-                                
-                            </tr>
-                        @endforeach
-
-
-
-
-
-                    </tbody>
-                </table>
-            @else
-                <h3 class="text-center mb-4">No previous orders</h3>
-            @endif
+        <div class="container px-0">
+          <div id="customCarousel2" class="carousel  carousel-fade" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="box">
+                  <div class="client_info">
+                    <div class="client_name">
+                      <h5>
+                        Morijorch
+                      </h5>
+                      <h6>
+                        Default model text
+                      </h6>
+                    </div>
+                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                  </div>
+                  <p>
+                    editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Variouseditors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Variouseditors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various
+                  </p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="box">
+                  <div class="client_info">
+                    <div class="client_name">
+                      <h5>
+                        Rochak
+                      </h5>
+                      <h6>
+                        Default model text
+                      </h6>
+                    </div>
+                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                  </div>
+                  <p>
+                    Variouseditors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Variouseditors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.
+                  </p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="box">
+                  <div class="client_info">
+                    <div class="client_name">
+                      <h5>
+                        Brad Johns
+                      </h5>
+                      <h6>
+                        Default model text
+                      </h6>
+                    </div>
+                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                  </div>
+                  <p>
+                    Variouseditors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy, editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Variouseditors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel_btn-box">
+              <a class="carousel-control-prev" href="#customCarousel2" role="button" data-slide="prev">
+                <i class="fa fa-angle-left" aria-hidden="true"></i>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#customCarousel2" role="button" data-slide="next">
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+          </div>
         </div>
-    </div>
+      </section>
+   
 
     <section class="info_section  layout_padding2-top mt-5">
         <div class="social_container">

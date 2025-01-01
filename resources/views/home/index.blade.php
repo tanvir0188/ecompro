@@ -29,7 +29,7 @@
 
     <!-- contact section -->
 
-    @include('home.contact')
+    {{-- @include('home.contact') --}}
 
     <br><br><br>
 

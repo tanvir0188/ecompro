@@ -11,44 +11,53 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav  ">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ url('/dashboard') }}">Home <span class="sr-only">(current)</span></a>
+            <ul class="navbar-nav">
+                <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ url('/') }}">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="shop.html">
+                <li class="nav-item {{ Request::is('shop') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ url('shop') }}">
                         Shop
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="why.html">
+                <li class="nav-item {{ Request::is('why') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ url('why') }}">
                         Why Us
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="testimonial.html">
+                <li class="nav-item {{ Request::is('testimonial') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ url('testimonial') }}">
                         Testimonial
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact Us</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{url('view_cart')}}" class="nav-link">
+                @auth
+                <li class="nav-item {{ Request::is('view_cart') ? 'active' : '' }}">
+                    <a href="{{ url('view_cart') }}" class="nav-link">
                         Cart
                         <i class="fa fa-shopping-bag" aria-hidden="true"></i>
                         @if ($cart_count)
-                        <sup>{{$cart_count}}</sup>
+                        <sup>{{ $cart_count }}</sup>
                         @endif
+                    </a>
+                </li>
+                <li class="nav-item {{ Request::is('wishlist') ? 'active' : '' }}">
+                    <a href="{{ url('wishlist') }}" class="nav-link" >
                         
+                        <i class="fa fa-heart" aria-hidden="true"></i>
+                        
+                        @if ($wishlist_items)
+                        <sup>{{ $wishlist_items }}</sup>
+                        @endif
                         
                     </a>
                 </li>
-                <li class="nav-item">
+                
+                <li class="nav-item {{ Request::is('order_history') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ url('order_history') }}">
                         <i class="fa fa-history" aria-hidden="true"></i> Orders
                     </a>
                 </li>
+                @endauth
             </ul>
             <div class="user_option">
                 @if (Route::has('login'))
@@ -60,32 +69,26 @@
                             <span>Logout</span>
                         </button>
                     </form>
-
                     @else
-                
-                <a href="{{ url('/login') }}">
-                    <i class="fa fa-user" aria-hidden="true"></i>
-                    <span>
-                        Login
-                    </span>
-                </a>
-                <a href="{{ url('/register') }}">
-                    <i class="fas fa-vcard" aria-hidden="true"></i>
-                    <span>
-                        Register
-                    </span>
-                </a>
-                @endauth
+                    <a href="{{ url('/login') }}">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                        <span>
+                            Login
+                        </span>
+                    </a>
+                    <a href="{{ url('/register') }}">
+                        <i class="fa fa-vcard" aria-hidden="true"></i>
+                        <span>
+                            Register
+                        </span>
+                    </a>
+                    @endauth
                 @endif
-                
-                
-                </a>
-                
-                <form class="form-inline ">
+                {{-- <form class="form-inline">
                     <button class="btn nav_search-btn" type="submit">
                         <i class="fa fa-search" aria-hidden="true"></i>
                     </button>
-                </form>
+                </form> --}}
             </div>
         </div>
     </nav>

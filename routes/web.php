@@ -8,8 +8,8 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'home']);
 
-Route::get('/dashboard', [HomeController::class, 'login_home'])->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('product_details/{id}', [HomeController::class, 'product_details'])->middleware(['auth', 'verified']);
+Route::get('dashboard', [HomeController::class, 'login_home'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('product_details/{id}', [HomeController::class, 'product_details']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -38,8 +38,25 @@ Route::get('delivered/{id}', [AdminController::class, 'delivered'])->middleware(
 
 
 // Customer views
+//login view
 Route::get('add_cart/{id}', [HomeController::class, 'add_cart'])->middleware(['auth', 'verified']);
 Route::get('view_cart', [HomeController::class, 'view_cart'])->middleware(['auth', 'verified']); //here we don't need to pass user id because, it's the user id that needed to be passed
 Route::get('delete_cart/{id}', [HomeController::class, 'delete_cart'])->middleware(['auth', 'verified']);
 Route::post('confirm_order', [HomeController::class, 'confirm_order'])->middleware(['auth', 'verified']);
 Route::get('order_history', [HomeController::class, 'order_history'])->middleware(['auth', 'verified']);
+Route::get('wishlist', [HomeController::class, 'wishlist'])->middleware(['auth', 'verified']);
+Route::get('add_wishlist/{id}', [HomeController::class, 'add_wishlist'])->middleware(['auth', 'verified']);
+Route::get('delete_wishlist/{id}', [HomeController::class, 'delete_wishlist'])->middleware(['auth', 'verified']);
+
+//public view
+Route::get('shop', [HomeController::class, 'shop']);
+Route::get('why', [HomeController::class, 'why']);
+Route::get('testimonial', [HomeController::class, 'testimonial']);
+
+//stripe payment
+Route::controller(HomeController::class)->group(function () {
+
+    Route::get('stripe/{totalValue}', 'stripe');
+
+    Route::post('stripe/{totalValue}', 'stripePost')->name('stripe.post');
+});

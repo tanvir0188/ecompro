@@ -166,6 +166,7 @@ class AdminController extends Controller
     {
         $order = Order::find($id);
         $order->status = 'Delivered';
+        $order->payment_status = 'paid';
         $order->save();
         toastr()->addSuccess('Order status has been updated successfully.');
         return redirect()->back();

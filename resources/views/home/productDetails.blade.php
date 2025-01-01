@@ -51,7 +51,7 @@
                         <!-- Action buttons at the bottom -->
                         <div class="action mt-3">
                             <a class="btn btn-primary" href="{{url('add_cart/'.$product->id)}}"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
-                            <button class="btn btn-secondary" type="button"><span class="fa fa-heart"></span> Add to Wishlist</button>
+                            <a class="btn btn-secondary" href="{{ url('add_wishlist/' . $product->id) }}"><span class="fa fa-heart"></span> Add to Wishlist</a>
                         </div>
                     </div>
                 </div>
