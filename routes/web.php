@@ -18,6 +18,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+//Admin views
 
 Route::get('admin/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'admin']);
 
@@ -31,9 +32,14 @@ Route::get('delete_product/{id}', [AdminController::class, 'delete_product'])->m
 Route::get('edit_product/{id}', [AdminController::class, 'edit_product'])->middleware(['auth', 'admin']);
 Route::put('update_product/{id}', [AdminController::class, 'update_product'])->middleware(['auth', 'admin']);
 Route::get('product_search', [AdminController::class, 'product_search'])->middleware(['auth', 'admin']);
+Route::get('order_list_view', [AdminController::class, 'order_list_view'])->middleware(['auth', 'admin']);
+Route::get('on_the_way/{id}', [AdminController::class, 'on_the_way'])->middleware(['auth', 'admin']);
+Route::get('delivered/{id}', [AdminController::class, 'delivered'])->middleware(['auth', 'admin']);
 
 
+// Customer views
 Route::get('add_cart/{id}', [HomeController::class, 'add_cart'])->middleware(['auth', 'verified']);
 Route::get('view_cart', [HomeController::class, 'view_cart'])->middleware(['auth', 'verified']); //here we don't need to pass user id because, it's the user id that needed to be passed
 Route::get('delete_cart/{id}', [HomeController::class, 'delete_cart'])->middleware(['auth', 'verified']);
 Route::post('confirm_order', [HomeController::class, 'confirm_order'])->middleware(['auth', 'verified']);
+Route::get('order_history', [HomeController::class, 'order_history'])->middleware(['auth', 'verified']);

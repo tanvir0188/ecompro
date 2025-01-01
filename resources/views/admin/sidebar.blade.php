@@ -12,7 +12,7 @@
     <ul class="list-unstyled">
         <li class="active"><a href="{{url('admin/dashboard')}}"> <i class="icon-home"></i>Home </a></li>
         <li><a href="{{url('view_category')}}"> <i class="icon-grid"></i>Category</a></li>
-        <li><a href=""> <i class="fa fa-bar-chart"></i>Charts </a></li>
+        <li><a href="{{url('order_list_view')}}"> <i class="fa fa-list"></i>Orders </a></li>
         <li><a href="{{url('add_product')}}"> <i class="fa fa-bar-chart"></i>Products </a></li>
         <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i
                     class="icon-windows"></i>Items </a>

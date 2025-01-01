@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Order;
 
 class AdminController extends Controller
 {
@@ -146,5 +147,27 @@ class AdminController extends Controller
         $product->save();
         toastr()->addSuccess('Product has been updated successfully.');
         return redirect()->route('admin.product');
+    }
+
+    public function order_list_view()
+    {
+        $orders = Order::all();
+        return view('admin.orderList', compact('orders'));
+    }
+    public function on_the_way($id)
+    {
+        $order = Order::find($id);
+        $order->status = 'On the way';
+        $order->save();
+        toastr()->addSuccess('Order status has been updated successfully.');
+        return redirect()->back();
+    }
+    public function delivered($id)
+    {
+        $order = Order::find($id);
+        $order->status = 'Delivered';
+        $order->save();
+        toastr()->addSuccess('Order status has been updated successfully.');
+        return redirect()->back();
     }
 }

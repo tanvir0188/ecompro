@@ -33,6 +33,22 @@
                 <li class="nav-item">
                     <a class="nav-link" href="contact.html">Contact Us</a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{url('view_cart')}}" class="nav-link">
+                        Cart
+                        <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                        @if ($cart_count)
+                        <sup>{{$cart_count}}</sup>
+                        @endif
+                        
+                        
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('order_history') }}">
+                        <i class="fa fa-history" aria-hidden="true"></i> Orders
+                    </a>
+                </li>
             </ul>
             <div class="user_option">
                 @if (Route::has('login'))
@@ -64,13 +80,7 @@
                 
                 
                 </a>
-                <a href="{{url('view_cart')}}">
-                    <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-                    @if ($cart_count)
-                    <sup>{{$cart_count}}</sup>
-                    @endif
-                    
-                </a>
+                
                 <form class="form-inline ">
                     <button class="btn nav_search-btn" type="submit">
                         <i class="fa fa-search" aria-hidden="true"></i>

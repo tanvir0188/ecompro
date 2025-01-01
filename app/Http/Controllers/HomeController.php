@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
 use App\Models\cart;
+use App\Models\User;
 use App\Models\Order;
+use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -37,7 +39,11 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('admin.index');
+        $userCount = User::all()->count();
+        $productCount = Product::all()->count();
+        $categoryCount = Category::all()->count();
+        $orderCount = Order::where('status', 'in progress')->get()->count();
+        return view('admin.index', compact('userCount', 'productCount', 'categoryCount', 'orderCount'));
     }
 
     public function product_details($id)
@@ -107,5 +113,21 @@ class HomeController extends Controller
 
         // Redirect back with a success message
         return redirect()->back()->with('success', 'Order confirmed successfully');
+    }
+
+    public function order_history()
+    {
+        $cart_count = cart::where('user_id', Auth::id())->count();
+        $user_id = Auth::id();
+        $previousOrders = Order::where('user_id', $user_id)->where('status', 'delivered')->get();
+        $pendingOrders = Order::where('user_id', $user_id)
+            ->where(function ($query) {
+                $query->whereRaw('LOWER(status) = ?', ['on the way'])
+                    ->orWhereRaw('LOWER(status) = ?', ['in progress']);
+            })
+            ->get();
+
+
+        return view('home.order_history', compact('cart_count', 'previousOrders', 'pendingOrders'));
     }
 }
