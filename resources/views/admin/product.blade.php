@@ -134,6 +134,7 @@
                     <tr>
                         <th>Image</th>
                         <th>Name</th>
+                        <th>Quantity</th>
                         <th>Description</th>
                         <th>Price</th>
                         <th>Category</th>
@@ -144,6 +145,7 @@
                     <tr>
                         <td><img src="{{asset('admintemplate/img/products/'. $product->image)}}" alt="image" width="100" height="100"></td>
                         <td>{{$product->title}}</td>
+                        <td>{{$product->quantity}}</td>
                         <td>{!!Str::limit($product->description, 30)!!}</td>
                         <td>{{$product->price}}</td>
                         <td>{{$product->category}}</td>

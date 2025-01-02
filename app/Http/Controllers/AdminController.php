@@ -163,15 +163,46 @@ class AdminController extends Controller
         toastr()->addSuccess('Order status has been updated successfully.');
         return redirect()->back();
     }
+
+
     public function delivered($id)
     {
         $order = Order::find($id);
+
+        // Check if the order exists
+        if (!$order) {
+            toastr()->addError('Order not found.');
+            return redirect()->back();
+        }
+
+        // Update order status
         $order->status = 'Delivered';
         $order->payment_status = 'paid';
+
+        // Access the associated product and update its quantity
+        $product = $order->product;
+
+        if ($product) {
+            // Ensure the product has sufficient stock
+            if ($product->quantity > 0) {
+                $product->quantity--;
+                $product->save();
+            } else {
+                toastr()->addWarning('Product is out of stock.');
+            }
+        } else {
+            toastr()->addError('Product associated with the order not found.');
+        }
+
+        // Save the updated order
         $order->save();
+
         toastr()->addSuccess('Order status has been updated successfully.');
         return redirect()->back();
     }
+
+
+
 
     public function userView()
     {
