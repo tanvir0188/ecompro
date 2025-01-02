@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\User;
+use App\Models\Order;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
-use App\Models\Order;
 
 class AdminController extends Controller
 {
@@ -170,5 +171,54 @@ class AdminController extends Controller
         $order->save();
         toastr()->addSuccess('Order status has been updated successfully.');
         return redirect()->back();
+    }
+
+    public function userView()
+    {
+        $users = User::orderBy('usertype', 'asc')->paginate(30);
+
+        return view('admin.userList', compact('users'));
+    }
+    public function userDelete($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+        toastr()->addSuccess('User has been deleted successfully.');
+        return redirect()->back();
+    }
+    public function manageUser($id)
+    {
+        $user = User::findOrFail($id);
+        return view('admin.manageUser', compact('user'));
+    }
+
+    public function updateUser($id, Request $request)
+    {
+        $user = User::findOrFail($id);
+
+        $rules = [
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'phone' => 'nullable|string|max:15',
+            'address' => 'nullable|string|max:255',
+            'usertype' => 'required|in:admin,customer',
+        ];
+
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->usertype = $request->usertype;
+        $user->save();
+        toastr()->addSuccess('User has been updated successfully.');
+        return redirect()->route('admin.userList');
     }
 }

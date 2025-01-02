@@ -35,6 +35,11 @@ Route::get('product_search', [AdminController::class, 'product_search'])->middle
 Route::get('order_list_view', [AdminController::class, 'order_list_view'])->middleware(['auth', 'admin']);
 Route::get('on_the_way/{id}', [AdminController::class, 'on_the_way'])->middleware(['auth', 'admin']);
 Route::get('delivered/{id}', [AdminController::class, 'delivered'])->middleware(['auth', 'admin']);
+Route::get('userList', [AdminController::class, 'userView'])->middleware(['auth', 'admin'])->name('admin.userList');
+Route::get('deleteUser/{id}', [AdminController::class, 'userDelete'])->middleware(['auth', 'admin']);
+Route::get('manageUser/{id}', [AdminController::class, 'manageUser'])->middleware(['auth', 'admin']);
+Route::put('updateUser/{id}', [AdminController::class, 'updateUser'])->middleware(['auth', 'admin']);
+
 
 
 // Customer views

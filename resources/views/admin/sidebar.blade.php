@@ -18,6 +18,11 @@
                 <i class="icon-home"></i>Home 
             </a>
         </li>
+        <li class="{{ Request::is('userList') ? 'active' : '' }}">
+            <a href="{{ url('userList') }}"> 
+                <i class="fa fa-user"></i>Users 
+            </a>
+        </li>
         <li class="{{ Request::is('view_category') ? 'active' : '' }}">
             <a href="{{ url('view_category') }}"> 
                 <i class="icon-grid"></i>Category
