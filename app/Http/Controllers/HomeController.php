@@ -11,6 +11,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Wishlist;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -35,10 +36,15 @@ class HomeController extends Controller
         return view('home.index', compact('products', 'cart_count', 'cart', 'wishlist_items'));
     }
 
-    public function shop()
+    public function shop(Request $request)
     {
 
-        $products = Product::orderBy('price', 'desc')->paginate(4);
+
+        $categories = Category::all();
+        $query = Product::query();
+
+
+
         if (Auth::id()) {
             $cart_count = cart::where('user_id', Auth::id())->count();
             $cart = cart::where('user_id', Auth::id())->get();
@@ -49,8 +55,21 @@ class HomeController extends Controller
             $wishlist_items = null;
         }
 
-        return view('home.shop', compact('products', 'cart_count', 'cart', 'wishlist_items'));
+        if ($request->has('categories') && is_array($request->categories)) {
+            $query->whereIn('id', $request->categories);
+        }
+        if ($request->has('search') && !empty($request->search)) {
+            $query->where('title', 'like', '%' . $request->search . '%');
+            $query->where('title', 'LIKE', '%' . $request->search . '%')->orWhere('description', 'LIKE', '%' . $request->search . '%')->orWhere('category', 'LIKE', '%' . $request->search . '%');
+        }
+        $products = $query->orderBy('price', 'asc')->paginate(8);
+
+
+
+        return view('home.shop', compact('products', 'cart_count', 'cart', 'wishlist_items', 'categories'));
     }
+
+
 
     public function why()
     {

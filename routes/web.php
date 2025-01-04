@@ -54,9 +54,11 @@ Route::get('add_wishlist/{id}', [HomeController::class, 'add_wishlist'])->middle
 Route::get('delete_wishlist/{id}', [HomeController::class, 'delete_wishlist'])->middleware(['auth', 'verified']);
 
 //public view
-Route::get('shop', [HomeController::class, 'shop']);
+Route::get('shop', [HomeController::class, 'shop'])->name('home.shop');
 Route::get('why', [HomeController::class, 'why']);
 Route::get('testimonial', [HomeController::class, 'testimonial']);
+
+
 
 //stripe payment
 Route::controller(HomeController::class)->group(function () {

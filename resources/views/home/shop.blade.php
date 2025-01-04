@@ -81,6 +81,7 @@
             overflow: hidden;
             position: relative;
         }
+        
     </style>
 
 </head>
@@ -101,132 +102,107 @@
     <!-- shop section -->
     <div class="container">
         <div class="heading_container heading_center">
-            <h2>
-                Browse products
-            </h2>
+            <h2>Browse products</h2>
         </div>
         <div class="row">
+            <!-- Sidebar for Filters -->
             <aside class="col-md-3">
-
                 <div class="card">
                     <article class="filter-group">
                         <header class="card-header">
-                            <a href="#" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true"
-                                class="">
+                            <a href="#" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true">
                                 <i class="icon-control fa fa-chevron-down"></i>
                                 <h6 class="title">Product type</h6>
                             </a>
                         </header>
-                        <div class="filter-content collapse show" id="collapse_1" style="">
+                        <div class="filter-content collapse show" id="collapse_1">
                             <div class="card-body">
-                                <form method="GET" action="" class="pb-3">
+                                <form method="GET" action="{{ route('home.shop') }}" class="pb-3">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Search">
+                                        <input type="text" name="search" value="{{ request('search') }}" class="form-control" placeholder="Search">
                                         <div class="input-group-append">
-                                            <button class="btn btn-light" type="button"><i
-                                                    class="fa fa-search"></i></button>
+                                            <button class="btn btn-light" type="submit"><i class="fa fa-search"></i></button>
                                         </div>
                                     </div>
                                 </form>
-
-
-
-                            </div> <!-- card-body.// -->
-                        </div>
-                    </article> <!-- filter-group  .// -->
-                    <article class="filter-group">
-                        <header class="card-header">
-                            <a href="#" data-toggle="collapse" data-target="#collapse_2" aria-expanded="true"
-                                class="">
-                                <i class="icon-control fa fa-chevron-down"></i>
-                                <h6 class="title">Categories </h6>
-                            </a>
-                        </header>
-                        <div class="filter-content collapse show" id="collapse_2" style="">
-                            <div class="card-body">
-                                <label class="custom-control custom-checkbox">
-                                    <input type="checkbox" checked="" class="custom-control-input">
-                                    <div class="custom-control-label">Mercedes
-                                        <b class="badge badge-pill badge-light float-right">120</b>
-                                    </div>
-                                </label>
-
-                            </div> <!-- card-body.// -->
+                            </div>
                         </div>
                     </article>
-
-
-
-                </div> <!-- card.// -->
-
+                    <article class="filter-group">
+                        <header class="card-header">
+                            <a href="#" data-toggle="collapse" data-target="#collapse_2" aria-expanded="true">
+                                <i class="icon-control fa fa-chevron-down"></i>
+                                <h6 class="title">Categories</h6>
+                            </a>
+                        </header>
+                        <div class="filter-content collapse show" id="collapse_2">
+                            <div class="card-body">
+                                <form method="GET" action="{{ route('home.shop') }}">
+                                    @foreach ($categories as $category)
+                                        <label class="custom-control custom-checkbox">
+                                            <input type="checkbox" name="categories[]" value="{{ $category->id }}" 
+                                                class="custom-control-input"
+                                                {{ is_array(request('categories')) && in_array($category->id, request('categories')) ? 'checked' : '' }}>
+                                            <div class="custom-control-label">{{ $category->category_name }}</div>
+                                        </label>
+                                    @endforeach
+                                    <button type="submit" class="btn btn-primary mt-3">Apply Filters</button>
+                                </form>
+                            </div>
+                        </div>
+                    </article>
+                </div>
             </aside>
-        
-            
-            <section class="shop_section ">
-                <div class="container">
-                    <div class="row">
-                        3 products found
+    
+            <!-- Main Section for Product Cards -->
+            <div class="col-md-9">
+                <div class="row d-flex">
+                    <div class="">
+                        <b>Products found:</b> &nbsp; {{ $products->count() }}
                     </div>
-
                     
-                    <div class="row">
-                        @foreach ($products as $product)
-                            <div class="col-sm-6 col-md-4 col-lg-4">
-                                <div class="box">
-                                    <a href="{{ url('product_details', $product->id) }}">
-                                        <div class="img-box">
-                                            <img src="{{ asset('admintemplate/img/products/' . $product->image) }}"
-                                                alt="">
+                    
+                </div>
+                <div class="row">
+                    
+                    @foreach ($products as $product)
+                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                            <div class="card card-product-grid">
+                                <div class="img-wrap">
+                                    <img src="{{ asset('admintemplate/img/products/'. $product->image) }}" alt="Product Image" class="card-img-top" style="height: 200px; object-fit: cover;">
+                                    
+                                        <div class="badge bg-light text-dark position-absolute top-0 start-0 m-2 px-3 py-1 rounded-pill" style="font-size: 0.8rem;">
+                                            New
                                         </div>
-                                        <div class="detail-box">
-                                            <h6>
-                                                {{ $product->title }}
-                                            </h6>
-                                            <h6>
-                                                Price
-                                                <span>
-                                                    {{ $product->price }}৳
-                                                </span>
-                                            </h6>
-                                        </div>
-        
-        
-                                        @auth
-                                            <div class="d-flex">
-                                                <!-- Cart button first -->
-                                                <a class="btn btn-primary" href="{{ url('add_cart/' . $product->id) }}">
-                                                    <i class="fa fa-shopping-cart"></i>
-                                                </a>
-                                                <!-- Wishlist button at the end -->
-                                                <a class="btn btn-secondary ml-auto"
-                                                    href="{{ url('add_wishlist/' . $product->id) }}">
-                                                    <i class="fa fa-heart"></i>
-                                                </a>
-                                            </div>
-                                        @endauth
-        
-        
-        
-                                        <div class="new">
-                                            <span>
-                                                New
-                                            </span>
-                                        </div>
-                                    </a>
+                                    
+                                </div>
+                                <div class="info-wrap">
+                                    <a href="{{ url('product_details', $product->id) }}" class="title">{{ $product->title }}</a>
+                                    <div class="price mt-2">Price: {{ $product->price }}৳</div>
+                                    <div class="d-flex justify-content-between gap-2 mt-3">
+                                        <a href="{{ url('add_cart/' . $product->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i></a>
+                                        <a href="{{ url('add_wishlist/' . $product->id) }}" class="btn btn-secondary btn-sm"><i class="fa fa-heart"></i></a>
+                                    </div>
+                                    
                                 </div>
                             </div>
-                        @endforeach
-        
-        
-                    </div>
-        
+                        </div>
+                    @endforeach
                 </div>
+    
+                <!-- Pagination -->
+                
+            </div>
         </div>
     </div>
+    
 
     
 
-    <div class="mt-2 d-flex justify-content-center">{{ $products->links() }}</div>
+    <div class="mt-2 d-flex justify-content-center">
+        {{ $products->appends(request()->input())->links() }}
+    </div>
+    
 
     <!-- end shop section -->
 

@@ -330,8 +330,17 @@ a:focus {
   padding: 10px;
   margin-top: 25px;
 }
+.box {
+  background-color: #eeeeee;
+  position: relative;
+  padding: 10px;
+  margin-top: 25px;
+}
 
 .shop_section .box a {
+  color: #000000;
+}
+.box a {
   color: #000000;
 }
 
@@ -349,7 +358,23 @@ a:focus {
   height: 245px;
 }
 
+.box .img-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 15px 30px;
+  height: 245px;
+}
 .shop_section .box .img-box img {
+  max-width: 100%;
+  max-height: 145px;
+}.box .img-box img {
   max-width: 100%;
   max-height: 145px;
 }
@@ -361,13 +386,40 @@ a:focus {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}.box .detail-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .shop_section .box .detail-box h6 span {
   color: #db4f66;
+}.box .detail-box h6 span {
+  color: #db4f66;
 }
 
 .shop_section .box .new {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 100%;
+  font-size: 15px;
+}.box .new {
   width: 50px;
   height: 50px;
   position: absolute;
@@ -395,6 +447,14 @@ a:focus {
       -ms-flex-pack: center;
           justify-content: center;
   margin-top: 45px;
+}.btn-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 45px;
 }
 
 .shop_section .btn-box a {
@@ -406,9 +466,21 @@ a:focus {
   border-radius: 5px;
   -webkit-transition: all .3s;
   transition: all .3s;
+}.btn-box a {
+  display: inline-block;
+  padding: 10px 40px;
+  background-color: #f16179;
+  color: #ffffff;
+  border: 1px solid #f16179;
+  border-radius: 5px;
+  -webkit-transition: all .3s;
+  transition: all .3s;
 }
 
 .shop_section .btn-box a:hover {
+  background-color: transparent;
+  color: #f16179;
+}.btn-box a:hover {
   background-color: transparent;
   color: #f16179;
 }
